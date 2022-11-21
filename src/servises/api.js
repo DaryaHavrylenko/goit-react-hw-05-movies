@@ -24,3 +24,9 @@ export const getCast = async movieId => {
    
     return cast;
 }
+
+export const getReviews = async movieId => {
+    const {data} = await axios.get(`/movie/${movieId}/reviews?api_key=${KEY_API}&language=en-US&page=1`);
+
+    return data.results;
+}
