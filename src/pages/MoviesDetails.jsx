@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 import { getFilmsById } from '../servises/api';
 import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w500';
 
@@ -11,7 +11,7 @@ export const MoviesDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log(location);
+
   const handleGoBack = () => {
     navigate(location.state.from);
   };
@@ -28,10 +28,16 @@ export const MoviesDetails = () => {
       <button type="button" onClick={handleGoBack}>
         Go back
       </button>
-      <h1>MovieDetails</h1>
-      <h2>{movie.title}</h2>
-      <img src={`${baseUrl + movie.poster_path}`} alt={movie.title} />
-      <p>Overview: {movie.overview}</p>
+      <div>
+        {' '}
+        <h1>MovieDetails</h1>
+        <h2>{movie.title}</h2>
+        <img src={`${baseUrl + movie.poster_path}`} alt={movie.title} />
+        <p>Overview: {movie.overview}</p>
+      </div>
+      <Link to="cast">Cast</Link>
+      <Link to="reviews">Reviews</Link>
+      <Outlet />
     </>
   );
 };
