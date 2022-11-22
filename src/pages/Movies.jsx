@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getFilmsByQuery } from 'servises/api';
-import { MoviesList } from 'components/MoviesList';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const Movies = () => {
+const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,3 +32,4 @@ export const Movies = () => {
     </div>
   );
 };
+export default Movies;

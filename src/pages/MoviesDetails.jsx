@@ -6,7 +6,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w500';
 
-export const MoviesDetails = () => {
+const MoviesDetails = () => {
   const [movie, setMovies] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
@@ -44,3 +44,4 @@ export const MoviesDetails = () => {
     </>
   );
 };
+export default MoviesDetails;

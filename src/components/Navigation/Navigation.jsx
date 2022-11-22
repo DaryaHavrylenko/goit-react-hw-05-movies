@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const Navigation = () => {
+const Navigation = () => {
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
@@ -9,3 +9,4 @@ export const Navigation = () => {
     </nav>
   );
 };
+export default Navigation;
