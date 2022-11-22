@@ -40,14 +40,28 @@ const Item = styled.li`
 `;
 
 const Img = styled.img`
-  display: block;
-  max-width: 100%;
-  height: auto;
+  border-radius: 5px;
+  width: 395px;
+  height: 575px;
+  transition-property: scale;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 1s ease-out;
+
+  cursor: pointer;
+  &:hover {
+    scale: 1.15;
+  }
 `;
-// NavLink = styled.a`
-//   margin-bottom: 12 px;
-//   overflow: hidden;
-// `;
+const Link = styled(NavLink)`
+  margin-bottom: 12 px;
+  overflow: hidden;
+  list-style: none;
+  text-decoration: none;
+
+  padding: 0;
+  margin: 0;
+`;
 
 const baseUrl = 'https://image.tmdb.org/t/p/w500';
 const posterFakeUrl =
@@ -60,14 +74,14 @@ export const MoviesList = ({ movies }) => {
       <Gallery>
         {movies.map(movie => (
           <Item key={movie.id}>
-            <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
               {movie.title || movie.name}
               {movie.poster_path ? (
                 <Img src={`${baseUrl + movie.poster_path}`} alt={movie.title} />
               ) : (
                 <Img src={`${posterFakeUrl}`} alt={movie.title} />
               )}
-            </NavLink>
+            </Link>
           </Item>
         ))}
       </Gallery>
