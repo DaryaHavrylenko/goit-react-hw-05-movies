@@ -16,19 +16,23 @@ const Cast = () => {
 
   return (
     <div>
-      <ul>
-        {cast.map(actor => (
-          <li key={actor.id}>
-            {actor.profile_path ? (
-              <img src={`${baseUrl + actor.profile_path}`} alt={actor.name} />
-            ) : (
-              <img src={`${posterFakeUrl}`} alt={actor.name} />
-            )}
-            <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
-          </li>
-        ))}
-      </ul>
+      {cast.length > 0 ? (
+        <ul>
+          {cast.map(actor => (
+            <li key={actor.id}>
+              {actor.profile_path ? (
+                <img src={`${baseUrl + actor.profile_path}`} alt={actor.name} />
+              ) : (
+                <img src={`${posterFakeUrl}`} alt={actor.name} />
+              )}
+              <p>{actor.name}</p>
+              <p>Character: {actor.character}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No information</p>
+      )}
     </div>
   );
 };

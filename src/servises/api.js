@@ -12,7 +12,7 @@ export const getTrendingFilms = async () => {
 
 export const getFilmsById = async (id) => {
     const { data } = await axios.get(`/movie/${id}?api_key=${KEY_API}&language=en-US`);
-    console.log(data)
+    // console.log(data)
     return data;
 }
 
@@ -33,26 +33,10 @@ export const getReviews = async movieId => {
     return data.results;
 }
 
-
-export const fetchGenres = async () => {
-    if (localStorage.getItem("genresDataArray" !== null)) {
-        return
-    }
-       try {
-           const genresDataArray = await axios.get(`/genre/movie/list?language=en-US&api_key=${KEY_API}`)
-           if (genresDataArray.status !== 200) {
-               return
-           }
-        //    console.log(genresDataArray.data.genres)
-        
-           localStorage.setItem(
-             'genresDataArray',
-             JSON.stringify(genresDataArray.data.genres)
-           );
-        
-       } catch (error) {
-        console.log(error)
-       }
-     
-     
+export const getGenres= async (movieId) => {
+    const {data:{genres}} = await axios.get(`/movie/${movieId}?api_key=${KEY_API}`);
+    // console.log(res.data.genres)
+    return genres;
 }
+
+

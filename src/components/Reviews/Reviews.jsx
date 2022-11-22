@@ -22,7 +22,7 @@ const Reviews = () => {
           ))}
         </ul>
       ) : (
-        <p>No reviews</p>
+        <p>No information</p>
       )}
     </div>
   );
