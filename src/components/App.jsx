@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-
+import { Container } from './Container.styled';
 // import { Home } from '../pages/Home';
 // import { Movies } from '../pages/Movies';
 // import { MoviesDetails } from 'pages/MoviesDetails';
@@ -18,7 +18,7 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <>
+    <Container>
       <Navigation />
       <Suspense fallback={<>Page is loading...</>}>
         <Routes>
@@ -30,6 +30,6 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
-    </>
+    </Container>
   );
 };

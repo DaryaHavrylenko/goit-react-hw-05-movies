@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from 'servises/api';
+import styled from 'styled-components';
+
+const Item = styled.li`
+  list-style-type: none;
+`;
 
 const baseUrl = 'https://image.tmdb.org/t/p/w200';
 const posterFakeUrl =
@@ -19,15 +24,20 @@ const Cast = () => {
       {cast.length > 0 ? (
         <ul>
           {cast.map(actor => (
-            <li key={actor.id}>
+            <Item key={actor.id}>
               {actor.profile_path ? (
                 <img src={`${baseUrl + actor.profile_path}`} alt={actor.name} />
               ) : (
-                <img src={`${posterFakeUrl}`} alt={actor.name} />
+                <img
+                  src={`${posterFakeUrl}`}
+                  alt={actor.name}
+                  width={200}
+                  height={300}
+                />
               )}
               <p>{actor.name}</p>
               <p>Character: {actor.character}</p>
-            </li>
+            </Item>
           ))}
         </ul>
       ) : (
