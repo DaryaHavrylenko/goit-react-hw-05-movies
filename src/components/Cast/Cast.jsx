@@ -19,12 +19,13 @@ const Cast = () => {
       <ul>
         {cast.map(actor => (
           <li key={actor.id}>
-            {actor.name}
             {actor.profile_path ? (
               <img src={`${baseUrl + actor.profile_path}`} alt={actor.name} />
             ) : (
               <img src={`${posterFakeUrl}`} alt={actor.name} />
             )}
+            <p>{actor.name}</p>
+            <p>Character: {actor.character}</p>
           </li>
         ))}
       </ul>
