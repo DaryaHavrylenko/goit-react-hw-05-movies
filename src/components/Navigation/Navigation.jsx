@@ -7,19 +7,28 @@ const Link = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: 500;
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
 
   &.active {
     color: white;
     background-color: orangered;
   }
 `;
-
+const Nav = styled.nav`
+  display: flex;
+  /* align-items: flex-start; */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30 px;
+`;
 const Navigation = () => {
   return (
-    <nav>
+    <Nav>
       <Link to="/">Home</Link>
       <Link to="/movies">Movies</Link>
-    </nav>
+    </Nav>
   );
 };
 export default Navigation;

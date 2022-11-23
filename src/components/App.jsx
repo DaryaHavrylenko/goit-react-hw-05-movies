@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Container } from './Container.styled';
+import { Header } from './Header/Header.styled';
 // import { Home } from '../pages/Home';
 // import { Movies } from '../pages/Movies';
 // import { MoviesDetails } from 'pages/MoviesDetails';
@@ -18,18 +19,22 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <Container>
-      <Navigation />
-      <Suspense fallback={<>Page is loading...</>}>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MoviesDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </Container>
+    <>
+      <Header>
+        <Navigation />
+      </Header>
+      <Container>
+        <Suspense fallback={<>Page is loading...</>}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:movieId" element={<MoviesDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </Container>
+    </>
   );
 };
