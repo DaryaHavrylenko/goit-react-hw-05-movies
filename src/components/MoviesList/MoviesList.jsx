@@ -38,6 +38,12 @@ const Item = styled.li`
     // z-index: 10;
   }
 `;
+const Text = styled.p`
+  font-size: 15px;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  color: black;
+`;
 
 const Img = styled.img`
   border-radius: 5px;
@@ -80,7 +86,7 @@ export const MoviesList = ({ movies }) => {
               ) : (
                 <Img src={`${posterFakeUrl}`} alt={movie.title} />
               )}
-              {movie.title || movie.name}
+              <Text>{movie.title || movie.name}</Text>
             </Link>
           </Item>
         ))}

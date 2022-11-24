@@ -16,6 +16,18 @@ const Link = styled(NavLink)`
   padding: 0;
   margin: 0;
   list-style: none;
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+  &.active {
+    color: white;
+    background-color: orangered;
+    border-radius: 4px;
+    padding: 4px 6px;
+  }
 `;
 const ItemsGenres = styled.li`
   list-style-type: none;
@@ -42,6 +54,14 @@ const ButtonGoBack = styled.button`
     color: white;
     background-color: orangered;
   }
+`;
+const TextH2 = styled.h2`
+  font-weight: 500;
+  font-size: 20px;
+`;
+const Text = styled.p`
+  font-weight: 400;
+  font-size: 15px;
 `;
 
 const baseUrl = 'https://image.tmdb.org/t/p/w500';
@@ -84,23 +104,28 @@ const MoviesDetails = () => {
         width={500}
         height={300}
       />
-      <p>Popularity: {movie.popularity.toFixed(0)}</p>
-      <p>Vote Average:{movie.vote_average.toFixed(1)}</p>
+      <TextH2>Popularity: {movie.popularity.toFixed(0)}</TextH2>
+      <TextH2>Vote Average: {movie.vote_average.toFixed(1)}</TextH2>
+      <TextH2>Genres:</TextH2>
       <GenresList>
-        Genres:
         {genres.map(({ id, name }) => (
           <ItemsGenres key={id}>{name}</ItemsGenres>
         ))}
       </GenresList>
-      <p>Overview: {movie.overview}</p>
+      <TextH2>
+        Overview: <Text>{movie.overview}</Text>
+      </TextH2>
 
-      <p>Additional information</p>
+      <TextH2>Additional information</TextH2>
+
       <Link to="cast" state={location.state}>
         Cast
       </Link>
+
       <Link to="reviews" state={location.state}>
         Reviews
       </Link>
+
       <Outlet />
     </DetailsContainer>
   );

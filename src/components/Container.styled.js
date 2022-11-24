@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div` 
+font-family: Roboto, sans-serif;
 text-decoration: none;
 display: flex;
     flex-direction: column;
