@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import styled from 'styled-components';
+
 const DetailsContainer = styled.div`
   width: 1280px;
   padding: 22px 24px;
